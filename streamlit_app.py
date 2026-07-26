@@ -98,7 +98,18 @@ with st.sidebar:
 # Main
 # --------------------------------------------------------------------------- #
 
-st.title("🎧 PDF to Speech")
+if ICON_PATH.is_file():
+    # Columns rather than the emoji, so the header carries the app's own artwork.
+    # They stack on narrow screens, which degrades acceptably to icon-above-title.
+    # A fixed width, not "stretch": on a phone these columns stack, and a
+    # stretched icon would fill the whole screen. 72px is sized to just fit the
+    # 1:8 column so little slack opens up between the icon and the title.
+    icon_col, title_col = st.columns([1, 8], vertical_alignment="center")
+    icon_col.image(str(ICON_PATH), width=72)
+    title_col.title(APP_NAME)
+else:
+    st.title(APP_NAME)
+
 st.markdown(
     "Turn a PDF, EPUB, or text file into a natural-sounding MP3 you can listen to "
     "anywhere. Free, no sign-up."
