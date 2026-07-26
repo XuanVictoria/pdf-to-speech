@@ -21,9 +21,15 @@ APP_NAME = "PDF to Speech"
 # minutes so one long book doesn't hold the app hostage for everyone else.
 MAX_CHARS = 60_000
 
+# Resolved relative to this file, not the working directory: Streamlit Cloud runs
+# the script from the repo root, so a bare "assets/app_icon.png" is fragile.
+# Falls back to an emoji if the asset is ever missing, so the app still starts.
+ICON_PATH = Path(__file__).parent / "assets" / "app_icon.png"
+PAGE_ICON = str(ICON_PATH) if ICON_PATH.is_file() else "🎧"
+
 st.set_page_config(
     page_title=APP_NAME,
-    page_icon="🎧",
+    page_icon=PAGE_ICON,
     layout="centered",
     menu_items={"about": f"{APP_NAME} — turn documents into natural-sounding audio."},
 )
