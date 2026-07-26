@@ -1,0 +1,13 @@
+[server]
+# Documents are read into memory; keep uploads modest on the free tier.
+maxUploadSize = 25
+
+[theme]
+base = "light"
+primaryColor = "#4F46E5"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F5F5FA"
+textColor = "#1A1A2E"
+
+[browser]
+gatherUsageStats = false
